@@ -10,7 +10,7 @@ def rates_api(src):
     if data["result"] == "success":
         last = parse(data["time_last_update_utc"])
         exchange_rates = data["rates"]
-        print(data)  # print all json
+        # print(data)  # print all json
     return last, exchange_rates
 
 
@@ -19,10 +19,23 @@ def convert(src, dst, amount):
     return last, exchange_rates[dst] * amount
 
 
-if __name__ == "__main__":
-    source_currency = sys.argv[1]
-    destination_currency = sys.argv[2]
-    amount = float(sys.argv[3])
+def convert_TRYtoRub(amount):
+    source_currency = "TRY"
+    destination_currency = "RUB"
     last, exchange_rate = convert(source_currency, destination_currency, amount)
     print("Last updated datetime:", last)
     print(f"{amount} {source_currency} = {exchange_rate} {destination_currency}")
+
+
+def convert_RubtoTry(amount):
+    source_currency = "RUB"
+    destination_currency = "TRY"
+    last, exchange_rate = convert(source_currency, destination_currency, amount)
+    print("Last updated datetime:", last)
+    print(f"{amount} {source_currency} = {exchange_rate} {destination_currency}")
+
+
+if __name__ == "__main__":
+    amount = float(sys.argv[1])
+    convert_TRYtoRub(amount)
+    convert_RubtoTry(amount)
