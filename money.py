@@ -36,6 +36,16 @@ def convert_RubtoTry(amount):
 
 
 if __name__ == "__main__":
-    amount = float(sys.argv[1])
-    convert_TRYtoRub(amount)
-    convert_RubtoTry(amount)
+    if len(sys.argv) != 2:
+        no_arg = True
+    else:
+        for char in sys.argv[1]:
+            if not (char.isdigit() or char == '.'):
+                notDigit = True
+
+    if notDigit or no_arg:
+        print("Validation error")
+    else:
+        amount = float(sys.argv[1])
+        convert_TRYtoRub(amount)
+        convert_RubtoTry(amount)
