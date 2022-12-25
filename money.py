@@ -36,6 +36,16 @@ def convert_RubtoTry(amount):
     print(f"{amount} {source_currency} = {exchange_rate} {destination_currency}")
 
 
+def random_money():
+    currencies = ["USD", "EUR", "AUD", "CAD", "BYN", "KZT", "UAH", "GBP", "CZK", "CHF", "JPY", "MGA", "AFN", "ZAR",
+                  "XOF", "SCR", "RWF", "RUB", "TRY", "ANG", "BHD", "CAD", "DZD", "GTQ", "HNL", "KGS", "LRD", "MVR",
+                  "NZD", "PHP", "RSD", "SGD", "SZL"]
+    rand = random.randint(0, 32)
+    rand1 = random.randint(0, 32)
+    amount = random.randint(0, 1000000)
+    last, exchange_rate = convert(currencies.pop(rand1), currencies.pop(rand), amount)
+    print(f"{amount} {currencies.pop(rand1)} = {exchange_rate} {currencies.pop(rand)}")
+
 if __name__ == "__main__":
     notDigit = False
     no_arg = False
@@ -47,8 +57,11 @@ if __name__ == "__main__":
                 notDigit = True
 
     if notDigit or no_arg:
-        print("Validation error")
+        print("Validation error, run random")
+        random_money()
     else:
         amount = float(sys.argv[1])
         convert_TRYtoRub(amount)
         convert_RubtoTry(amount)
+
+
