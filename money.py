@@ -1,5 +1,6 @@
 import requests
 import sys
+import random
 from dateutil.parser import parse
 
 
@@ -36,6 +37,8 @@ def convert_RubtoTry(amount):
 
 
 if __name__ == "__main__":
+    notDigit = False
+    no_arg = False
     if len(sys.argv) != 2:
         no_arg = True
     else:
