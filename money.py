@@ -26,6 +26,7 @@ def convert_TRYtoRub(amount):
     last, exchange_rate = convert(source_currency, destination_currency, amount)
     print("Last updated datetime:", last)
     print(f"{amount} {source_currency} = {exchange_rate} {destination_currency}")
+    return f"{amount} {source_currency} = {exchange_rate} {destination_currency}"
 
 
 def convert_RubtoTry(amount):
@@ -34,6 +35,7 @@ def convert_RubtoTry(amount):
     last, exchange_rate = convert(source_currency, destination_currency, amount)
     print("Last updated datetime:", last)
     print(f"{amount} {source_currency} = {exchange_rate} {destination_currency}")
+    return f"{amount} {source_currency} = {exchange_rate} {destination_currency}"
 
 
 def random_money():
@@ -45,6 +47,9 @@ def random_money():
     amount = random.randint(0, 1000000)
     last, exchange_rate = convert(currencies.pop(rand1), currencies.pop(rand), amount)
     print(f"{amount} {currencies.pop(rand1)} = {exchange_rate} {currencies.pop(rand)}")
+    print(exchange_rate, currencies.pop(rand1), currencies.pop(rand))
+    return currencies.pop(rand1), currencies.pop(rand), rand, rand1, amount
+
 
 if __name__ == "__main__":
     notDigit = False
@@ -63,5 +68,3 @@ if __name__ == "__main__":
         amount = float(sys.argv[1])
         convert_TRYtoRub(amount)
         convert_RubtoTry(amount)
-
-
